@@ -6,4 +6,4 @@ id:number;
 title:string;
 body:string;
 }
-export const getPosts = async () => (await axios.get<IPosts[]>("https://jsonplaseholder.typicode.com/posts")).data
+export const getPosts = async () => (await axios.get<IPosts[]>("https://jsonplaceholder.typicode.com/posts")).data
