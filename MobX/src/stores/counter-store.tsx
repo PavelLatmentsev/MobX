@@ -29,4 +29,7 @@ constructor() {
 }
 
 
-export default new CounterStore();
+// export default new CounterStore(); - можно экспортировать инстанс.
+
+
+export default CounterStore; // А можно сам стор.

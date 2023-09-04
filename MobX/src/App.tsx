@@ -1,8 +1,8 @@
 import "./App.css";
-import Count from "./components/count/count";
+import Wrapper from "./components/wrapper/wraper";
 
 function App() {
-  return <Count />;
+  return <Wrapper />;
 }
 
 export default App;
