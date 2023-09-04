@@ -1,18 +1,21 @@
 import { observer } from "mobx-react-lite";
 // import Count from "../count/count";
 // import CounterStore from "../../stores/counter-store";
-import postsStore from "../../stores/posts-store";
+// import postsStore from "../../stores/posts-store";
 import { useEffect } from "react";
+import { useStores } from "../../root-store-context";
 
 
 // const counter1 = new CounterStore();
 // const counter2 = new CounterStore();
 export const Wrapper = observer(() => {
-    const {getPostsAction, posts}= postsStore;
+    // const {getPostsAction, posts}= postsStore; вариант с отдельным стором.
+    //Вариант через rootProvider
+    const {post}=useStores();
     useEffect(()=> {
-getPostsAction()
+        post.getPostsAction()//добавили пост из хука
     },[])
-    console.log(posts, "posts")
+    console.log(post.posts, "posts")//добавили пост их хука
 
     // if(posts?.state ==="pending") {
     //     return <div>loading</div>
@@ -23,7 +26,7 @@ getPostsAction()
 
     // Вариация с методом case
 
-    if(!posts) {
+    if(!post.posts) {
         return null;
     }
 
@@ -35,7 +38,7 @@ getPostsAction()
 //     </>
 //   );} вариация с условиями
 
-return posts.case({
+return post.posts.case({
     pending:()=><div>Loading...</div>,
     rejected:()=><div>error...</div>,
     fulfilled:(value) => (
